@@ -32,7 +32,7 @@ vertical_alignment = 1
 
 [node name="GridContainer" type="GridContainer" parent="VSplitContainer"]
 layout_mode = 2
-size_flags_vertical = 10
+size_flags_vertical = 3
 columns = 4
 
 [node name="Button0" type="Button" parent="VSplitContainer/GridContainer"]
