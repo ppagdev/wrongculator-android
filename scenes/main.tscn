@@ -32,7 +32,7 @@ vertical_alignment = 1
 [node name="GridContainer" type="GridContainer" parent="VSplitContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-columns = 3
+columns = 4
 
 [node name="Button0" type="Button" parent="VSplitContainer/GridContainer"]
 layout_mode = 2
@@ -104,6 +104,34 @@ size_flags_vertical = 3
 theme_override_font_sizes/font_size = 100
 text = "9"
 
+[node name="ButtonAdd" type="Button" parent="VSplitContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 100
+text = "+"
+
+[node name="ButtonSubtract" type="Button" parent="VSplitContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 100
+text = "-"
+
+[node name="ButtonMultiply" type="Button" parent="VSplitContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 100
+text = "*"
+
+[node name="ButtonDivide" type="Button" parent="VSplitContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 100
+text = "/"
+
 [node name="ButtonClr" type="Button" parent="VSplitContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -111,14 +139,26 @@ size_flags_vertical = 3
 theme_override_font_sizes/font_size = 100
 text = "C"
 
-[connection signal="pressed" from="VSplitContainer/GridContainer/Button0" to="." method="_on_button_pressed" binds= [0]]
-[connection signal="pressed" from="VSplitContainer/GridContainer/Button1" to="." method="_on_button_pressed" binds= [1]]
-[connection signal="pressed" from="VSplitContainer/GridContainer/Button2" to="." method="_on_button_pressed" binds= [2]]
-[connection signal="pressed" from="VSplitContainer/GridContainer/Button3" to="." method="_on_button_pressed" binds= [3]]
-[connection signal="pressed" from="VSplitContainer/GridContainer/Button4" to="." method="_on_button_pressed" binds= [4]]
-[connection signal="pressed" from="VSplitContainer/GridContainer/Button5" to="." method="_on_button_pressed" binds= [5]]
-[connection signal="pressed" from="VSplitContainer/GridContainer/Button6" to="." method="_on_button_pressed" binds= [6]]
-[connection signal="pressed" from="VSplitContainer/GridContainer/Button7" to="." method="_on_button_pressed" binds= [7]]
-[connection signal="pressed" from="VSplitContainer/GridContainer/Button8" to="." method="_on_button_pressed" binds= [8]]
-[connection signal="pressed" from="VSplitContainer/GridContainer/Button9" to="." method="_on_button_pressed" binds= [9]]
+[node name="ButtonEquals" type="Button" parent="VSplitContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 100
+text = "="
+
+[connection signal="pressed" from="VSplitContainer/GridContainer/Button0" to="." method="_on_button_pressed" binds= ["0"]]
+[connection signal="pressed" from="VSplitContainer/GridContainer/Button1" to="." method="_on_button_pressed" binds= ["1"]]
+[connection signal="pressed" from="VSplitContainer/GridContainer/Button2" to="." method="_on_button_pressed" binds= ["2"]]
+[connection signal="pressed" from="VSplitContainer/GridContainer/Button3" to="." method="_on_button_pressed" binds= ["3"]]
+[connection signal="pressed" from="VSplitContainer/GridContainer/Button4" to="." method="_on_button_pressed" binds= ["4"]]
+[connection signal="pressed" from="VSplitContainer/GridContainer/Button5" to="." method="_on_button_pressed" binds= ["5"]]
+[connection signal="pressed" from="VSplitContainer/GridContainer/Button6" to="." method="_on_button_pressed" binds= ["6"]]
+[connection signal="pressed" from="VSplitContainer/GridContainer/Button7" to="." method="_on_button_pressed" binds= ["7"]]
+[connection signal="pressed" from="VSplitContainer/GridContainer/Button8" to="." method="_on_button_pressed" binds= ["8"]]
+[connection signal="pressed" from="VSplitContainer/GridContainer/Button9" to="." method="_on_button_pressed" binds= ["9"]]
+[connection signal="pressed" from="VSplitContainer/GridContainer/ButtonAdd" to="." method="_on_button_pressed" binds= ["+"]]
+[connection signal="pressed" from="VSplitContainer/GridContainer/ButtonSubtract" to="." method="_on_button_pressed" binds= ["-"]]
+[connection signal="pressed" from="VSplitContainer/GridContainer/ButtonMultiply" to="." method="_on_button_pressed" binds= ["*"]]
+[connection signal="pressed" from="VSplitContainer/GridContainer/ButtonDivide" to="." method="_on_button_pressed" binds= ["/"]]
 [connection signal="pressed" from="VSplitContainer/GridContainer/ButtonClr" to="." method="_on_button_clr_pressed"]
+[connection signal="pressed" from="VSplitContainer/GridContainer/ButtonEquals" to="." method="_on_button_equals_pressed"]
