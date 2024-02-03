@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dxfi1ninmdbop"]
+[gd_scene load_steps=3 format=3 uid="uid://dxfi1ninmdbop"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_wk8ey"]
+[ext_resource type="Texture2D" uid="uid://dxbwc446wi4bm" path="res://assets/images/chalkboard-background.jpg" id="2_2tpqb"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -24,14 +25,14 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="VSplitContainer"]
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 10
 theme_override_font_sizes/font_size = 100
 horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="GridContainer" type="GridContainer" parent="VSplitContainer"]
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 10
 columns = 4
 
 [node name="Button0" type="Button" parent="VSplitContainer/GridContainer"]
@@ -145,6 +146,18 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 100
 text = "="
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -10
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_2tpqb")
+expand_mode = 3
 
 [connection signal="pressed" from="VSplitContainer/GridContainer/Button0" to="." method="_on_button_pressed" binds= ["0"]]
 [connection signal="pressed" from="VSplitContainer/GridContainer/Button1" to="." method="_on_button_pressed" binds= ["1"]]
