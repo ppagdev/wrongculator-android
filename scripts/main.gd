@@ -5,14 +5,26 @@ extends Control
 func _ready():
 	print("WRONGCULATOR IS NOW ACTIVE!!!")
 
+func wrongculate(expression):
+	var rng = RandomNumberGenerator.new()
+	if rng.randi_range(0,2):
+		return expression
+	var num = str(rng.randi_range(-5, 5))
+	expression += "+ " + num
+	return expression
+
 func evaluateExpression():
 	var display = get_node("VSplitContainer/Label")
+	var text = wrongculate(display.text)
 	var expression = Expression.new() 
-	if expression.parse(display.text):
+	if expression.parse(text):
 		resetDisplay()
 		appendToDisplay("ERROR")
 		return
-	var result = str(expression.execute())
+
+	var result = expression.execute()
+	
+	result = str(result)
 	resetDisplay()
 	appendToDisplay(result)
 
