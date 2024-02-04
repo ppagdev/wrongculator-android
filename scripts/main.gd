@@ -5,6 +5,10 @@ extends Control
 func _ready():
 	print("WRONGCULATOR IS NOW ACTIVE!!!")
 
+func backspace():
+	var display = get_node("VSplitContainer/Label")
+	display.text = display.text.left(display.text.length()-1)
+
 func wrongculate(expression):
 	var rng = RandomNumberGenerator.new()
 	if rng.randi_range(0,2):
@@ -51,3 +55,7 @@ func _on_button_clr_pressed():
 
 func _on_button_equals_pressed():
 	evaluateExpression()
+
+
+func _on_button_backspace_pressed():
+	backspace()

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxfi1ninmdbop"]
+[gd_scene load_steps=4 format=3 uid="uid://dxfi1ninmdbop"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_wk8ey"]
 [ext_resource type="Texture2D" uid="uid://dxbwc446wi4bm" path="res://assets/images/chalkboard-background.jpg" id="2_2tpqb"]
+[ext_resource type="Texture2D" uid="uid://bv02aaipfbskx" path="res://assets/images/backspace-icon.png" id="2_dvkbd"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -140,6 +141,14 @@ size_flags_vertical = 3
 theme_override_font_sizes/font_size = 100
 text = "C"
 
+[node name="ButtonBackspace" type="Button" parent="VSplitContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 100
+icon = ExtResource("2_dvkbd")
+icon_alignment = 1
+
 [node name="ButtonEquals" type="Button" parent="VSplitContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -174,4 +183,5 @@ expand_mode = 3
 [connection signal="pressed" from="VSplitContainer/GridContainer/ButtonMultiply" to="." method="_on_button_pressed" binds= ["*"]]
 [connection signal="pressed" from="VSplitContainer/GridContainer/ButtonDivide" to="." method="_on_button_pressed" binds= ["/"]]
 [connection signal="pressed" from="VSplitContainer/GridContainer/ButtonClr" to="." method="_on_button_clr_pressed"]
+[connection signal="pressed" from="VSplitContainer/GridContainer/ButtonBackspace" to="." method="_on_button_backspace_pressed"]
 [connection signal="pressed" from="VSplitContainer/GridContainer/ButtonEquals" to="." method="_on_button_equals_pressed"]
