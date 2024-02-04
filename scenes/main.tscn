@@ -134,6 +134,20 @@ size_flags_vertical = 3
 theme_override_font_sizes/font_size = 100
 text = "/"
 
+[node name="ButtonLeftParentheses" type="Button" parent="VSplitContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 100
+text = "("
+
+[node name="ButtonRightParentheses" type="Button" parent="VSplitContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 100
+text = ")"
+
 [node name="ButtonClr" type="Button" parent="VSplitContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -182,6 +196,8 @@ expand_mode = 3
 [connection signal="pressed" from="VSplitContainer/GridContainer/ButtonSubtract" to="." method="_on_button_pressed" binds= ["-"]]
 [connection signal="pressed" from="VSplitContainer/GridContainer/ButtonMultiply" to="." method="_on_button_pressed" binds= ["*"]]
 [connection signal="pressed" from="VSplitContainer/GridContainer/ButtonDivide" to="." method="_on_button_pressed" binds= ["/"]]
+[connection signal="pressed" from="VSplitContainer/GridContainer/ButtonLeftParentheses" to="." method="_on_button_pressed" binds= ["("]]
+[connection signal="pressed" from="VSplitContainer/GridContainer/ButtonRightParentheses" to="." method="_on_button_pressed" binds= [")"]]
 [connection signal="pressed" from="VSplitContainer/GridContainer/ButtonClr" to="." method="_on_button_clr_pressed"]
 [connection signal="pressed" from="VSplitContainer/GridContainer/ButtonBackspace" to="." method="_on_button_backspace_pressed"]
 [connection signal="pressed" from="VSplitContainer/GridContainer/ButtonEquals" to="." method="_on_button_equals_pressed"]
