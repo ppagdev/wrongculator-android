@@ -40,7 +40,7 @@ func appendToDisplay(arg):
 	var display = get_node("VSplitContainer/Label")
 	if display.text == "ERROR":
 		resetDisplay()
-	if display.text.length() >= 8:
+	if display.text.length() >= 12:
 		display.text = display.text.substr(0,8)
 		return
 	display.text += arg
