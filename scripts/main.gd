@@ -1,5 +1,6 @@
 extends Control
 
+var char_limit = 12
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -40,8 +41,8 @@ func appendToDisplay(arg):
 	var display = get_node("VSplitContainer/Label")
 	if display.text == "ERROR":
 		resetDisplay()
-	if display.text.length() >= 12:
-		display.text = display.text.substr(0,12)
+	if display.text.length() >= char_limit:
+		display.text = display.text.substr(0,char_limit)
 		return
 	display.text += arg
 
