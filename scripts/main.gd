@@ -1,6 +1,7 @@
 extends Control
 
 var char_limit = 12
+var coward = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,6 +12,8 @@ func backspace():
 	display.text = display.text.left(display.text.length()-1)
 
 func wrongculate(expression):
+	if coward:
+		return expression
 	var rng = RandomNumberGenerator.new()
 	if rng.randi_range(0,2):
 		return expression
@@ -60,3 +63,11 @@ func _on_button_equals_pressed():
 
 func _on_button_backspace_pressed():
 	backspace()
+
+
+func _on_coward_mode_toggled(toggled_on):
+	coward = toggled_on
+	if toggled_on:
+		get_node("PanelContainer/CowardMode").text = "Coward"
+	else:
+		get_node("PanelContainer/CowardMode").text = "Normal"
