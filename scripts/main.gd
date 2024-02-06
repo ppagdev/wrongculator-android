@@ -41,7 +41,7 @@ func appendToDisplay(arg):
 	if display.text == "ERROR":
 		resetDisplay()
 	if display.text.length() >= 12:
-		display.text = display.text.substr(0,8)
+		display.text = display.text.substr(0,12)
 		return
 	display.text += arg
 
