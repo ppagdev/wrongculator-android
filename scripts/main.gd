@@ -2,17 +2,19 @@ extends Control
 
 var char_limit = 12
 var coward = false
-
+@onready var achievements_node = get_node("PanelContainer3/AchievementsPopup")
+@onready var display = get_node("VSplitContainer/Label")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print("WRONGCULATOR IS NOW ACTIVE!!!")
+	achievements_node.load_achievements()
 
 func backspace():
-	var display = get_node("VSplitContainer/Label")
 	display.text = display.text.left(display.text.length()-1)
 
 func wrongculate(expression):
 	if coward:
+		achievements_node.achieve("COWARD")
 		return expression
 	var rng = RandomNumberGenerator.new()
 	if rng.randi_range(0,2):
@@ -22,7 +24,6 @@ func wrongculate(expression):
 	return expression
 
 func evaluateExpression():
-	var display = get_node("VSplitContainer/Label")
 	var text = wrongculate(display.text)
 	var expression = Expression.new() 
 	if expression.parse(text):
@@ -37,11 +38,9 @@ func evaluateExpression():
 	appendToDisplay(result)
 
 func resetDisplay():
-	var display = get_node("VSplitContainer/Label")
 	display.text = ""
 
 func appendToDisplay(arg):
-	var display = get_node("VSplitContainer/Label")
 	if display.text == "ERROR":
 		resetDisplay()
 	if display.text.length() >= char_limit:
@@ -58,6 +57,8 @@ func _on_button_clr_pressed():
 
 
 func _on_button_equals_pressed():
+	if display.text == "ERROR":
+		return
 	evaluateExpression()
 
 
@@ -71,3 +72,8 @@ func _on_coward_mode_toggled(toggled_on):
 		get_node("PanelContainer/CowardMode").text = "Coward"
 	else:
 		get_node("PanelContainer/CowardMode").text = "Normal"
+
+
+func _on_button_achievements_pressed():
+	var panel = get_node("PanelContainer3")
+	panel.set_visible(!panel.is_visible())

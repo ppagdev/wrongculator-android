@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://dxfi1ninmdbop"]
+[gd_scene load_steps=16 format=3 uid="uid://dxfi1ninmdbop"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_wk8ey"]
 [ext_resource type="Texture2D" uid="uid://dxbwc446wi4bm" path="res://assets/images/chalkboard-background.jpg" id="2_2tpqb"]
 [ext_resource type="Texture2D" uid="uid://bv02aaipfbskx" path="res://assets/images/backspace-icon.png" id="2_dvkbd"]
 [ext_resource type="Texture2D" uid="uid://jyvc7p7ombb" path="res://assets/images/medal-icon.png" id="4_eu5kf"]
+[ext_resource type="Script" path="res://scenes/achievements.gd" id="5_ql62k"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rp33r"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -42,6 +43,19 @@ border_blend = true
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7xrtf"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_20t0r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k1piq"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.188235, 0.317647, 0.0117647, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e8gy7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kha28"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -179,14 +193,14 @@ size_flags_vertical = 3
 theme_override_font_sizes/font_size = 100
 text = "/"
 
-[node name="ButtonLeftParentheses" type="Button" parent="VSplitContainer/GridContainer"]
+[node name="ButtonLParentheses" type="Button" parent="VSplitContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 100
 text = "("
 
-[node name="ButtonRightParentheses" type="Button" parent="VSplitContainer/GridContainer"]
+[node name="ButtonRParentheses" type="Button" parent="VSplitContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -222,7 +236,7 @@ size_flags_vertical = 3
 theme_override_font_sizes/font_size = 100
 text = "="
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 z_index = -10
 layout_mode = 1
 anchors_preset = 15
@@ -239,9 +253,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -155.0
-offset_right = -10.0
-offset_bottom = 42.0
+offset_left = -414.0
+offset_top = 30.0
+offset_right = -30.0
+offset_bottom = 187.0
 grow_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_s0sbg")
 
@@ -260,8 +275,10 @@ expand_icon = true
 
 [node name="PanelContainer2" type="PanelContainer" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 150.0
+offset_bottom = 150.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_s0sbg")
 
 [node name="ButtonAchievements" type="Button" parent="PanelContainer2"]
@@ -271,7 +288,31 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_20t0r")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_20t0r")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_20t0r")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_20t0r")
+action_mode = 0
 icon = ExtResource("4_eu5kf")
+
+[node name="PanelContainer3" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 30.0
+offset_top = -78.5
+offset_right = -20.0
+offset_bottom = 78.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_k1piq")
+
+[node name="AchievementsPopup" type="RichTextLabel" parent="PanelContainer3"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 75
+theme_override_styles/focus = SubResource("StyleBoxEmpty_e8gy7")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kha28")
+fit_content = true
+script = ExtResource("5_ql62k")
 
 [connection signal="pressed" from="VSplitContainer/GridContainer/Button0" to="." method="_on_button_pressed" binds= ["0"]]
 [connection signal="pressed" from="VSplitContainer/GridContainer/Button1" to="." method="_on_button_pressed" binds= ["1"]]
@@ -287,10 +328,11 @@ icon = ExtResource("4_eu5kf")
 [connection signal="pressed" from="VSplitContainer/GridContainer/ButtonSubtract" to="." method="_on_button_pressed" binds= ["-"]]
 [connection signal="pressed" from="VSplitContainer/GridContainer/ButtonMultiply" to="." method="_on_button_pressed" binds= ["*"]]
 [connection signal="pressed" from="VSplitContainer/GridContainer/ButtonDivide" to="." method="_on_button_pressed" binds= ["/"]]
-[connection signal="pressed" from="VSplitContainer/GridContainer/ButtonLeftParentheses" to="." method="_on_button_pressed" binds= ["("]]
-[connection signal="pressed" from="VSplitContainer/GridContainer/ButtonRightParentheses" to="." method="_on_button_pressed" binds= [")"]]
+[connection signal="pressed" from="VSplitContainer/GridContainer/ButtonLParentheses" to="." method="_on_button_pressed" binds= ["("]]
+[connection signal="pressed" from="VSplitContainer/GridContainer/ButtonRParentheses" to="." method="_on_button_pressed" binds= [")"]]
 [connection signal="pressed" from="VSplitContainer/GridContainer/ButtonPoint" to="." method="_on_button_pressed" binds= ["."]]
 [connection signal="pressed" from="VSplitContainer/GridContainer/ButtonClr" to="." method="_on_button_clr_pressed"]
 [connection signal="pressed" from="VSplitContainer/GridContainer/ButtonBackspace" to="." method="_on_button_backspace_pressed"]
 [connection signal="pressed" from="VSplitContainer/GridContainer/ButtonEquals" to="." method="_on_button_equals_pressed"]
 [connection signal="toggled" from="PanelContainer/CowardMode" to="." method="_on_coward_mode_toggled"]
+[connection signal="pressed" from="PanelContainer2/ButtonAchievements" to="." method="_on_button_achievements_pressed"]
