@@ -1,9 +1,11 @@
 extends RichTextLabel
 
+signal achievement_unlocked
+
 var achievements = {
 	"COWARD" : false,
-	"A2" : false,
-	"A3" : false,
+	"Humble Beginnings" : false,
+	"Is this thing on?" : false,
 }
 
 func save_achievements():
@@ -30,8 +32,11 @@ func load_achievements():
 		print("Failed to load achievements data.")
 
 func achieve(a):
+	if achievements[a] == true:
+		return
 	achievements[a] = true
 	save_achievements()
+	achievement_unlocked.emit(a)
 
 func displayAchievements():
 	var total = len(achievements)
